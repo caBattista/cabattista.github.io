@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: #000000;
+    color: rgb(233, 233, 233);
+    text-shadow: 0px 1px 2px #000000;
+}
+
+a {
+    color: orange;
+}
+
+h3 {
+    margin: 5px;
+    border-radius: 2em;
+    padding: 10px;
+}
+
+table h3 {
+    background-color: rgba(96, 96, 96, 0.5);
+}
+
+table div {
+    padding: 2px;
+    margin: 5px;
+    background-color: rgba(63, 63, 63, 0.5);
+    border-radius: 2em;
+}
+
+table {
+    width: calc(100%);
+    border-spacing: 5px;
+    text-align: center;
+}
+
+table th {
+    border-radius: 1em;
+    background-color: rgb(28, 28, 28);
+    cursor: pointer;
+}
+
+table td {
+    border-radius: 1em;
+    background-color: rgb(28, 28, 28);
+    padding: 5px
+}
+
+table table th {
+    padding: 5px;
+    background-color: rgba(98, 98, 98, 0.5);
+}
+
+table table td {
+    background-color: rgba(149, 149, 149, 0.3);
+}
+
+.tooltip {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+.tooltip>div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    background-color: rgb(43, 43, 43);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.9);
+    border-radius: 2em;
+    padding: 10px 20px;
+}
+
+.tooltip>div>div {
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+.tooltip>div>div:first-child {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    box-shadow: 1px 1px 10px rgb(0, 0, 0);
+    border-radius: 2em;
+}
+
+.click {
+    cursor: pointer;
+    user-select: none;
+}
+
+.click:hover {
+    color: #fff;
+    text-shadow: -2px 2px 4px #000000;
+}

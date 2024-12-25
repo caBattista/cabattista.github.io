@@ -1,1 +1,247 @@
-lol.2
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="marked.js"></script>
+    <script type="text/javascript" src="structure.js"></script>
+    <script type="text/javascript" src="fourSides.js"></script>
+    <script type="text/javascript" src="relationships.js"></script>
+    <title>The MBTI Typegrid</title>
+</head>
+
+<body>
+    <script>
+        function createHTML(htmlString, parent, siblings = 0) {
+            const template = document.createElement('template');
+            template.innerHTML = htmlString.replace(/(\r\n|\n|\r)/gm, "").replace(/  +/g, ' ').trim();
+            const children = Array.from(template.content.children);
+            if (parent) {
+                children.forEach(child => {
+                    parent.appendChild(child);
+                });
+            }
+            return siblings === "all" ? children : children[siblings];
+        }
+
+        function createToolTip() {
+            let div = createHTML(`<div class="tooltip"><div><div class="click">X</div><div></div></div></div>`, document.body);
+            //div.addEventListener("click", function (ev) { div.remove(); });
+            div.firstChild.firstChild.addEventListener("click", function (ev) { div.remove(); });
+            return div.firstChild.lastChild;
+        }
+
+        function makeClickable(el, func) {
+            el.classList.add("click");
+            el.addEventListener("click", func);
+        }
+
+        function createList(array, parent) {
+            var ul = createHTML(`<ul></ul>`, parent);
+            array.forEach(function (line) {
+                var li = createHTML(`<li>${line}</li>`, ul);
+            })
+        }
+
+        function createListOfObjects(array, parent) {
+            array.forEach(function (object) {
+                var title = createHTML(`<h4>${object.source}</h4>`, parent);
+                var ul = createHTML(`<ul></ul>`, parent);
+                object.desc.forEach(function (line) {
+                    var li = createHTML(`<li>${line}</li>`, ul);
+                })
+            })
+        }
+
+        //Display Logic
+        function getObjectsByValue(object, key, val) {
+            let objects = [];
+            for (const [oKey, oValue] of Object.entries(object)) {
+                for (const [oKey1, oValue1] of Object.entries(oValue)) {
+                    if (oKey1 === key && oValue1 === val) {
+                        objects.push(object[oKey]);
+                    }
+                }
+            }
+            return objects;
+        }
+
+        function getTypeFromFuctions(functions) {
+            for (const [key, value] of Object.entries(types)) {
+                if (JSON.stringify(value.cogFuncs) === JSON.stringify(functions)) {
+                    return key;
+                }
+            }
+        }
+
+        //Four Sides
+        function getFourSidesfromType(type) {
+            var functions = [];
+            for (let i = 0; i < fourSides.Ego.places.length; i++) {
+
+                fourSides.Ego.places[i].cFunc = type.cogFuncs[i];
+                functions.push(type.cogFuncs[i]);
+            }
+            fourSides.Ego.type = getTypeFromFuctions(functions);
+            functions = [];
+            for (let i = 0; i < fourSides.Subconcious.places.length; i++) {
+                fourSides.Subconcious.places[i].cFunc = type.cogFuncs[3 - i];
+                functions.push(type.cogFuncs[3 - i]);
+            }
+            fourSides.Subconcious.type = getTypeFromFuctions(functions);
+            functions = [];
+            for (let i = 0; i < fourSides.Unconcious.places.length; i++) {
+                fourSides.Unconcious.places[i].cFunc = cognitiveFunctions[type.cogFuncs[i]].invFunc;
+                functions.push(cognitiveFunctions[type.cogFuncs[i]].invFunc);
+            }
+            fourSides.Unconcious.type = getTypeFromFuctions(functions);
+            functions = [];
+            for (let i = 0; i < fourSides.SuperEgo.places.length; i++) {
+                fourSides.SuperEgo.places[i].cFunc = cognitiveFunctions[type.cogFuncs[3 - i]].invFunc;
+                functions.push(cognitiveFunctions[type.cogFuncs[3 - i]].invFunc);
+            }
+            fourSides.SuperEgo.type = getTypeFromFuctions(functions);
+            return fourSides;
+        }
+
+        function createFourSidesTable(fourSides) {
+            let table = createHTML(`<table></table>`);
+
+            let tr = createHTML(`<tr><th>Ego - <i>${fourSides.Ego.type}</i></th><th>Subconcious - <i>${fourSides.Subconcious.type}</i></th></tr>`, table);
+            makeClickable(tr.firstChild, function (ev) {
+                var tt = createToolTip();
+                createHTML(`<h3>${ev.target.textContent}</h3>`, tt);
+                createList(fourSides[ev.target.textContent.split(" ")[0]].desc, tt);
+            })
+            makeClickable(tr.lastChild, function (ev) {
+                var tt = createToolTip();
+                createHTML(`<h3>${ev.target.textContent}</h3>`, tt);
+                createList(fourSides[ev.target.textContent.split(" ")[0]].desc, tt);
+            })
+
+            tr = createHTML(`<tr><td></td><td></td></tr>`, table);
+            createCogfunctionTable("Ego", tr.firstChild);
+            createCogfunctionTable("Subconcious", tr.lastChild);
+
+            tr = createHTML(`<tr><th>Unconcious - <i>${fourSides.Unconcious.type}</i></th><th>SuperEgo - <i>${fourSides.SuperEgo.type}</i></th></tr>`, table);
+            makeClickable(tr.firstChild, function (ev) {
+                var tt = createToolTip();
+                createHTML(`<h3>${ev.target.textContent}</h3>`, tt);
+                createList(fourSides[ev.target.textContent.split(" ")[0]].desc, tt);
+            })
+            makeClickable(tr.lastChild, function (ev) {
+                var tt = createToolTip();
+                createHTML(`<h3>${ev.target.textContent}</h3>`, tt);
+                createList(fourSides[ev.target.textContent.split(" ")[0]].desc, tt);
+            })
+
+            tr = createHTML(`<tr><td></td><td></td></tr>`, table);
+            createCogfunctionTable("Unconcious", tr.firstChild);
+            createCogfunctionTable("SuperEgo", tr.lastChild);
+
+            return table;
+        }
+
+        function createCogfunctionTable(sideName, parent) {
+            var side = fourSides[sideName];
+            let table = createHTML(`<table></table>`, parent);
+            for (let i = 0; i < side.places.length; i++) {
+                let tr = createHTML(`<tr><td style="background-color:${side.places[i].color}" data-sideName="${sideName}" data-place="${i}">${side.places[i].name}</td><td style="background-color:${cognitiveFunctions[side.places[i].cFunc].color}">${side.places[i].cFunc}</td></tr>`, table);
+                makeClickable(tr.firstChild, function (ev) {
+                    var tt = createToolTip();
+                    createHTML(`<h3>${ev.target.textContent}</h3>`, tt);
+                    createList(fourSides[ev.target.getAttribute("data-sideName")].places[ev.target.getAttribute("data-place")].desc, tt);
+                })
+                makeClickable(tr.lastChild, function (ev) {
+                    fetch(`/resourses/Cognitive Functions/${ev.target.textContent}.md`)
+                        .then(response => response.text())
+                        .then(data => {
+                            createToolTip().innerHTML = marked.parse(data);
+                            [...document.links].forEach(link => { link.target = "_blank"; });
+                        })
+                })
+            }
+        }
+
+        var table = createHTML(`<table></table>`, document.body);
+        var tr = createHTML(`<tr></tr>`, table);
+
+        //Temperaments
+        var th = createHTML(`<th>Temperaments ⏵<br>Interaction Styles ⏷</th>`, tr);
+        for (const [key, value] of Object.entries(temperaments)) {
+            var th = createHTML(`<th><h3 style="background-color:${value.color}">${value.name} - ${value.prcnt}%</h3></th>`, tr);
+            makeClickable(th.firstChild, function (ev) {
+                fetch(`/resourses/Temperaments/${value.name.split(" ")[0]}.md`)
+                    .then(response => response.text())
+                    .then(data => {
+                        createToolTip().innerHTML = marked.parse(data);
+                        [...document.links].forEach(link => { link.target = "_blank"; });
+                    })
+            })
+            value.parts.forEach(function (part) {
+                var prt = createHTML(`<div>${part}</div>`, th);
+                makeClickable(prt, function (ev) {
+                    fetch(`/resourses/Temperaments/Temperament Parts/${part}.md`)
+                        .then(response => response.text())
+                        .then(data => {
+                            createToolTip().innerHTML = marked.parse(data);
+                            [...document.links].forEach(link => { link.target = "_blank"; });
+                        })
+                })
+            })
+        }
+
+        //Interaction Styles
+        for (const [key, value] of Object.entries(interactionsStyles)) {
+            var tr = createHTML(`<tr></tr>`, table);
+            var th = createHTML(`<th><h3>${value.name} - ${value.prcnt}%</h3></th>`, tr);
+            makeClickable(th.firstChild, function (ev) {
+                fetch(`/resourses/Interaction Styles/${value.name}.md`)
+                    .then(response => response.text())
+                    .then(data => {
+                        createToolTip().innerHTML = marked.parse(data);
+                        [...document.links].forEach(link => { link.target = "_blank"; });
+                    })
+            })
+            value.parts.forEach(function (part) {
+                var prt = createHTML(`<div>${part}</div>`, th);
+                makeClickable(prt, function (ev) {
+                    fetch(`/resourses/Interaction Styles/Interaction Parts/${part}.md`)
+                        .then(response => response.text())
+                        .then(data => {
+                            createToolTip().innerHTML = marked.parse(data);
+                            [...document.links].forEach(link => { link.target = "_blank"; });
+                        })
+                })
+            })
+            //Types
+            getObjectsByValue(types, "intStyle", key).forEach(type => {
+                let td = createHTML(`<td><h3 data-type="${type.name}" style="padding: 10px;">${type.name} - ${type.prcnt}%<br></h3><div style="background-color:${quadra[type.quadra].color}">${quadra[type.quadra].name} - ${quadra[type.quadra].prcnt}%</div></td>`, tr);
+                makeClickable(td.firstChild, function (ev) {
+                    fetch(`/resourses/Types/${type.name[0].substring(0, 4)}.md`)
+                        .then(response => response.text())
+                        .then(data => {
+                            createToolTip().innerHTML = marked.parse(data);
+                            [...document.links].forEach(link => { link.target = "_blank"; });
+                        })
+                })
+                makeClickable(td.lastChild, function (ev) {
+                    fetch(`/resourses/Quadra/${ev.target.textContent.split(" ")[0]}.md`)
+                        .then(response => response.text())
+                        .then(data => {
+                            createToolTip().innerHTML = marked.parse(data);
+                            [...document.links].forEach(link => { link.target = "_blank"; });
+                        })
+                })
+                //Four Sides of mind
+                td.appendChild(createFourSidesTable(getFourSidesfromType(type)));
+            });
+        }
+
+    </script>
+</body>
+
+</html>
