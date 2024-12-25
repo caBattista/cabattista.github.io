@@ -156,7 +156,7 @@
                     createList(fourSides[ev.target.getAttribute("data-sideName")].places[ev.target.getAttribute("data-place")].desc, tt);
                 })
                 makeClickable(tr.lastChild, function (ev) {
-                    fetch(`/resourses/Cognitive Functions/${ev.target.textContent}.md`)
+                    fetch(`./resourses/Cognitive Functions/${ev.target.textContent}.md`)
                         .then(response => response.text())
                         .then(data => {
                             createToolTip().innerHTML = marked.parse(data);
@@ -174,7 +174,7 @@
         for (const [key, value] of Object.entries(temperaments)) {
             var th = createHTML(`<th><h3 style="background-color:${value.color}">${value.name} - ${value.prcnt}%</h3></th>`, tr);
             makeClickable(th.firstChild, function (ev) {
-                fetch(`/resourses/Temperaments/${value.name.split(" ")[0]}.md`)
+                fetch(`./resourses/Temperaments/${value.name.split(" ")[0]}.md`)
                     .then(response => response.text())
                     .then(data => {
                         createToolTip().innerHTML = marked.parse(data);
@@ -184,7 +184,7 @@
             value.parts.forEach(function (part) {
                 var prt = createHTML(`<div>${part}</div>`, th);
                 makeClickable(prt, function (ev) {
-                    fetch(`/resourses/Temperaments/Temperament Parts/${part}.md`)
+                    fetch(`./resourses/Temperaments/Temperament Parts/${part}.md`)
                         .then(response => response.text())
                         .then(data => {
                             createToolTip().innerHTML = marked.parse(data);
@@ -199,7 +199,7 @@
             var tr = createHTML(`<tr></tr>`, table);
             var th = createHTML(`<th><h3>${value.name} - ${value.prcnt}%</h3></th>`, tr);
             makeClickable(th.firstChild, function (ev) {
-                fetch(`/resourses/Interaction Styles/${value.name}.md`)
+                fetch(`./resourses/Interaction Styles/${value.name}.md`)
                     .then(response => response.text())
                     .then(data => {
                         createToolTip().innerHTML = marked.parse(data);
@@ -209,7 +209,7 @@
             value.parts.forEach(function (part) {
                 var prt = createHTML(`<div>${part}</div>`, th);
                 makeClickable(prt, function (ev) {
-                    fetch(`/resourses/Interaction Styles/Interaction Parts/${part}.md`)
+                    fetch(`./resourses/Interaction Styles/Interaction Parts/${part}.md`)
                         .then(response => response.text())
                         .then(data => {
                             createToolTip().innerHTML = marked.parse(data);
@@ -221,7 +221,7 @@
             getObjectsByValue(types, "intStyle", key).forEach(type => {
                 let td = createHTML(`<td><h3 data-type="${type.name}" style="padding: 10px;">${type.name} - ${type.prcnt}%<br></h3><div style="background-color:${quadra[type.quadra].color}">${quadra[type.quadra].name} - ${quadra[type.quadra].prcnt}%</div></td>`, tr);
                 makeClickable(td.firstChild, function (ev) {
-                    fetch(`/resourses/Types/${type.name[0].substring(0, 4)}.md`)
+                    fetch(`./resourses/Types/${type.name[0].substring(0, 4)}.md`)
                         .then(response => response.text())
                         .then(data => {
                             createToolTip().innerHTML = marked.parse(data);
@@ -229,7 +229,7 @@
                         })
                 })
                 makeClickable(td.lastChild, function (ev) {
-                    fetch(`/resourses/Quadra/${ev.target.textContent.split(" ")[0]}.md`)
+                    fetch(`./resourses/Quadra/${ev.target.textContent.split(" ")[0]}.md`)
                         .then(response => response.text())
                         .then(data => {
                             createToolTip().innerHTML = marked.parse(data);
