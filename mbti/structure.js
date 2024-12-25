@@ -7,70 +7,70 @@
 
 var types = {
     ESTJ: {
-        cogFuncs: ["TE", "SI", "NE", "FI"],
+        cogFuncs: ["Te", "Si", "Ne", "Fi"],
         intStyle: "SIC", temp: "GUARD", quadra: "PHILO", name: ["ESTJ - Overseer"],
         prcnt: 8.7,
 
     },
     ESTP: {
-        cogFuncs: ["SE", "TI", "FE", "NI"], intStyle: "SIC", temp: "ARTIS", quadra: "TEMPL", name: ["ESTP - Persuader"],
+        cogFuncs: ["Se", "Ti", "Fe", "Ni"], intStyle: "SIC", temp: "ARTIS", quadra: "TEMPL", name: ["ESTP - Persuader"],
         prcnt: 4.3
     },
     ENTJ: {
-        cogFuncs: ["TE", "NI", "SE", "FI"], intStyle: "SIC", temp: "INTEL", quadra: "WAYFA", name: ["ENTJ - Chief"],
+        cogFuncs: ["Te", "Ni", "Se", "Fi"], intStyle: "SIC", temp: "INTEL", quadra: "WAYFA", name: ["ENTJ - Chief"],
         prcnt: 1.8
     },
     ENFJ: {
-        cogFuncs: ["FE", "NI", "SE", "TI"], intStyle: "SIC", temp: "IDEAL", quadra: "TEMPL", name: ["ENFJ - Mentor"],
+        cogFuncs: ["Fe", "Ni", "Se", "Ti"], intStyle: "SIC", temp: "IDEAL", quadra: "TEMPL", name: ["ENFJ - Mentor"],
         goldenPair: "INFP",
         prcnt: 2.5
     },
     ESFJ: {
-        cogFuncs: ["FE", "SI", "NE", "TI"], intStyle: "SGG", temp: "GUARD", quadra: "CRUSA", name: ["ESFJ - Supporter"],
+        cogFuncs: ["Fe", "Si", "Ne", "Ti"], intStyle: "SGG", temp: "GUARD", quadra: "CRUSA", name: ["ESFJ - Supporter"],
         prcnt: 12
     },
     ESFP: {
-        cogFuncs: ["SE", "FI", "TE", "NI"], intStyle: "SGG", temp: "ARTIS", quadra: "WAYFA", name: ["ESFP - Entertainer"],
+        cogFuncs: ["Se", "Fi", "Te", "Ni"], intStyle: "SGG", temp: "ARTIS", quadra: "WAYFA", name: ["ESFP - Entertainer"],
         prcnt: 8.5
     },
     ENTP: {
-        cogFuncs: ["NE", "TI", "FE", "SI"], intStyle: "SGG", temp: "INTEL", quadra: "CRUSA", name: ["ENTP - Visionary"],
+        cogFuncs: ["Ne", "Ti", "Fe", "Si"], intStyle: "SGG", temp: "INTEL", quadra: "CRUSA", name: ["ENTP - Visionary"],
         prcnt: 3.2
     },
     ENFP: {
-        cogFuncs: ["NE", "FI", "TE", "SI"], intStyle: "SGG", temp: "IDEAL", quadra: "PHILO", name: ["ENFP - Advocate"],
+        cogFuncs: ["Ne", "Fi", "Te", "Si"], intStyle: "SGG", temp: "IDEAL", quadra: "PHILO", name: ["ENFP - Advocate"],
         prcnt: 8.1
     },
     ISTJ: {
-        cogFuncs: ["SI", "TE", "FI", "NE"], intStyle: "SIT", temp: "GUARD", quadra: "PHILO", name: ["ISTJ - Examiner"],
+        cogFuncs: ["Si", "Te", "Fi", "Ne"], intStyle: "SIT", temp: "GUARD", quadra: "PHILO", name: ["ISTJ - Examiner"],
         prcnt: 11.6
     },
     ISTP: {
-        cogFuncs: ["TI", "SE", "NI", "FE"], intStyle: "SIT", temp: "ARTIS", quadra: "TEMPL", name: ["ISTP - Craftsman"],
+        cogFuncs: ["Ti", "Se", "Ni", "Fe"], intStyle: "SIT", temp: "ARTIS", quadra: "TEMPL", name: ["ISTP - Craftsman"],
         prcnt: 5.4
     },
     INTJ: {
-        cogFuncs: ["NI", "TE", "FI", "SE"], intStyle: "SIT", temp: "INTEL", quadra: "WAYFA", name: ["INTJ - Strategist"],
+        cogFuncs: ["Ni", "Te", "Fi", "Se"], intStyle: "SIT", temp: "INTEL", quadra: "WAYFA", name: ["INTJ - Strategist"],
         prcnt: 2.1
     },
     INFJ: {
-        cogFuncs: ["NI", "FE", "TI", "SE"], intStyle: "SIT", temp: "IDEAL", quadra: "TEMPL", name: ["INFJ - Sage"],
+        cogFuncs: ["Ni", "Fe", "Ti", "Se"], intStyle: "SIT", temp: "IDEAL", quadra: "TEMPL", name: ["INFJ - Sage"],
         prcnt: 1.5
     },
     ISFJ: {
-        cogFuncs: ["SI", "FE", "TI", "NE"], intStyle: "BTS", temp: "GUARD", quadra: "CRUSA", name: ["ISFJ - Defender"],
+        cogFuncs: ["Si", "Fe", "Ti", "Ne"], intStyle: "BTS", temp: "GUARD", quadra: "CRUSA", name: ["ISFJ - Defender"],
         prcnt: 13.8
     },
     ISFP: {
-        cogFuncs: ["FI", "SE", "NI", "TE"], intStyle: "BTS", temp: "ARTIS", quadra: "WAYFA", name: ["ISFP - Artist"],
+        cogFuncs: ["Fi", "Se", "Ni", "Te"], intStyle: "BTS", temp: "ARTIS", quadra: "WAYFA", name: ["ISFP - Artist"],
         prcnt: 8.8
     },
     INTP: {
-        cogFuncs: ["TI", "NE", "SI", "FE"], intStyle: "BTS", temp: "INTEL", quadra: "CRUSA", name: ["INTP - Engineer"],
+        cogFuncs: ["Ti", "Ne", "Si", "Fe"], intStyle: "BTS", temp: "INTEL", quadra: "CRUSA", name: ["INTP - Engineer"],
         prcnt: 3.3
     },
     INFP: {
-        cogFuncs: ["FI", "NE", "SI", "TE"], intStyle: "BTS", temp: "IDEAL", quadra: "PHILO", name: ["INFP - Dreamer"],
+        cogFuncs: ["Fi", "Ne", "Si", "Te"], intStyle: "BTS", temp: "IDEAL", quadra: "PHILO", name: ["INFP - Dreamer"],
         goldenPair: "ENFJ",
         prcnt: 4.4
     },
