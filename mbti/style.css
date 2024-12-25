@@ -78,7 +78,7 @@ table table td {
 
 .tooltip>div>div {
     overflow-y: auto;
-    max-height: 90vh;
+    max-height: 95vh;
 }
 
 .tooltip>div>div:first-child {

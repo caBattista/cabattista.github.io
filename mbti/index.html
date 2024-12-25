@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="marked.js"></script>
     <script type="text/javascript" src="structure.js"></script>
@@ -12,7 +12,6 @@
     <script type="text/javascript" src="relationships.js"></script>
     <title>The MBTI Typegrid</title>
 </head>
-
 
 <body>
     <script>
@@ -30,7 +29,6 @@
 
         function createToolTip() {
             let div = createHTML(`<div class="tooltip"><div><div class="click">X</div><div></div></div></div>`, document.body);
-            //div.addEventListener("click", function (ev) { div.remove(); });
             div.firstChild.firstChild.addEventListener("click", function (ev) { div.remove(); });
             return div.firstChild.lastChild;
         }
