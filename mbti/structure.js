@@ -192,49 +192,49 @@ var extraversion = {
 //Type grid shoud be deductively, so start by assuming every one has everthing and then subtract traits
 //Informations and concepts
 var cognitiveFunctions = {
-    SE: {
+    Se: {
         name: "Extroverted   Sensing",
         type: "Percieving (Gathering Information)",
-        invFunc: "SI",
+        invFunc: "Si",
         color: "#75edff"
     },
-    SI: {
+    Si: {
         name: "Introverted   Sensing",
         type: "Percieving (Gathering Information)",
-        invFunc: "SE",
+        invFunc: "Se",
         color: "#8f4200"
     },
-    NE: {
+    Ne: {
         name: "Extroverted Intuition",
         type: "Percieving (Gathering Information)",
-        invFunc: "NI",
+        invFunc: "Ni",
         color: "#0066ff"
     },
-    NI: {
+    Ni: {
         name: "Introverted Intuition",
         type: "Percieving (Gathering Information)",
-        invFunc: "NE",
+        invFunc: "Ne",
         color: "#ff3300"
     },
-    TE: {
-        name: "Extroverted  Thinking",
+    Te: {
+        name: "Extroverted Thinking",
         type: "Judging (Deciding)",
-        invFunc: "TI"
+        invFunc: "Ti"
     },
-    TI: {
+    Ti: {
         name: "Introverted Thinking",
         type: "Judging (Deciding)",
-        invFunc: "TE"
+        invFunc: "Te"
     },
-    FE: {
-        name: "Extroverted  Feeling",
+    Fe: {
+        name: "Extroverted Feeling",
         type: "Judging (Deciding)",
-        invFunc: "FI",
+        invFunc: "Fi",
     },
-    FI: {
-        name: "Introverted   Feeling",
+    Fi: {
+        name: "Introverted Feeling",
         type: "Judging (Deciding)",
-        invFunc: "FE"
+        invFunc: "Fe"
     },
 }
 //Thinking is a true false decision
