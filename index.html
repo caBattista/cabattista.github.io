@@ -210,7 +210,7 @@
     </div>
 
     <footer>
-        <div class="social-links">
+        <div id="sl" class="social-links">
             <!-- <a href="mailto:" target="_blank"><i class="fa fa-envelope"></i>E-Mail</a> -->
             <a href="https://www.linkedin.com/in/christopher-battista-4030b3248/" target="_blank"><i
                     class="fab fa-linkedin"></i>LinkedIn</a>
@@ -220,17 +220,34 @@
                     class="fab fa-youtube"></i>YouTube</a>
             <a href="https://www.instagram.com/battistaChristopher/" target="_blank"><i
                     class="fab fa-instagram"></i>Instagram</a>
-
+        </div>
+        <div id="lb" class="social-links" style="display: none;">
+            <a href="#"><i class="fa fa-arrow-left"></i>Back</a>
+        </div>
     </footer>
 
     <script>
-        const Graph = new ForceGraph3D(document.getElementById('3d-graph'))
-            .jsonUrl('graphData.json')
-            .nodeAutoColorBy('user');
+
+        const graphCont = document.getElementById('3d-graph');
+        const N = 1000;
+        const gData = {
+            nodes: [...Array(N).keys()].map(i => ({ id: i })),
+            links: [...Array(N).keys()]
+                .filter(id => id)
+                .map(id => ({
+                    source: id,
+                    target: Math.round(Math.random() * (id - 1))
+                }))
+        };
+        const Graph = new ForceGraph3D(graphCont)
+            .graphData(gData)
+            .nodeAutoColorBy('id');
 
         const header = document.getElementsByTagName('header')[0];
         const container = document.getElementsByClassName('container')[0];
         const footer = document.getElementsByTagName('footer')[0];
+        const socialLinks = document.getElementById('sl');
+        const linkBack = document.getElementById('lb');
 
         setTimeout(() => {
             header.style.transition = "1s";
@@ -242,9 +259,23 @@
         }, 1000);
 
         setTimeout(() => {
-            header.style.transition = "";
-            container.style.transition = "";
-            footer.style.transition = "";
+            header.style.transition = "0.5s";
+            container.style.transition = "0.5s";
+            footer.style.transition = "0.5s";
+
+            graphCont.addEventListener("click", ev => {
+                container.style.opacity = 0;
+                container.style.pointerEvents = "none";
+                socialLinks.style.display = "none";
+                linkBack.style.display = "";
+            })
+
+            linkBack.addEventListener("click", ev => {
+                container.style.opacity = 1;
+                container.style.pointerEvents = "";
+                socialLinks.style.display = "";
+                linkBack.style.display = "none";
+            })
         }, 5000);
     </script>
 </body>
