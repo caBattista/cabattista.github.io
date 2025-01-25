@@ -46457,7 +46457,7 @@
             t.container.appendChild(t.navInfo = document.createElement("div")),
             t.navInfo.className = "scene-nav-info",
             t.navInfo.textContent = {
-                orbit: "Left-click: rotate, Mouse-wheel/middle-click: zoom, Right-click: pan",
+                orbit: "",//"Left-click: rotate, Mouse-wheel/middle-click: zoom, Right-click: pan",
                 trackball: "Left-click: rotate, Mouse-wheel/middle-click: zoom, Right-click: pan",
                 fly: "WASD: move, R|F: up | down, Q|E: roll, up|down: pitch, left|right: yaw"
             }[r] || "",
