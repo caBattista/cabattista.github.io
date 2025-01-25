@@ -46458,8 +46458,8 @@
             t.navInfo.className = "scene-nav-info",
             t.navInfo.textContent = {
                 orbit: "",//"Left-click: rotate, Mouse-wheel/middle-click: zoom, Right-click: pan",
-                trackball: "Left-click: rotate, Mouse-wheel/middle-click: zoom, Right-click: pan",
-                fly: "WASD: move, R|F: up | down, Q|E: roll, up|down: pitch, left|right: yaw"
+                trackball: "",//"Left-click: rotate, Mouse-wheel/middle-click: zoom, Right-click: pan",
+                fly: "",//"WASD: move, R|F: up | down, Q|E: roll, up|down: pitch, left|right: yaw"
             }[r] || "",
             t.navInfo.style.display = t.showNavInfo ? null : "none",
             t.tooltip = new cL(t.container),
