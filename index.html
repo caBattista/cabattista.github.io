@@ -13,6 +13,9 @@
         }
 
         body {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             display: flex;
@@ -27,10 +30,10 @@
         header {
             position: absolute;
             z-index: 1;
+            padding: 5px;
             top: 0;
             background: rgba(31, 31, 31, 0.9);
             color: #ffffff;
-            padding: 20px 0;
             width: 100%;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
@@ -113,28 +116,23 @@
             position: absolute;
             z-index: 1;
             bottom: 0;
-            margin-top: 30px;
-            padding: 20px 0;
+            padding: 5px;
             background: rgba(31, 31, 31, 0.9);
             color: #ffffff;
             width: 100%;
             text-align: center;
             font-size: 0.9rem;
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
-            border-radius: 16px 16px 0 0;
             opacity: 0;
         }
 
-        .social-links {
-            margin-top: 20px;
-        }
-
         .social-links a {
-            margin: 0 10px;
+            margin: 0 5px;
             color: #ff6f00;
             text-decoration: none;
             font-size: 1.2rem;
             transition: color 0.3s;
+            white-space: nowrap;
         }
 
         .social-links i {
@@ -160,6 +158,11 @@
 
             .container h2 {
                 font-size: 1.5rem;
+            }
+
+            .container {
+                margin: 0;
+                padding: 0;
             }
         }
     </style>
@@ -217,7 +220,6 @@
                     class="fab fa-youtube"></i>YouTube</a>
             <a href="https://www.instagram.com/battistaChristopher/" target="_blank"><i
                     class="fab fa-instagram"></i>Instagram</a>
-            <p>&copy; 2025 Christopher Battista</p>
 
     </footer>
 
@@ -238,6 +240,12 @@
             footer.style.transition = "4s";
             footer.style.opacity = "1";
         }, 1000);
+
+        setTimeout(() => {
+            header.style.transition = "";
+            container.style.transition = "";
+            footer.style.transition = "";
+        }, 5000);
     </script>
 </body>
 
