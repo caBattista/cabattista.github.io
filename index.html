@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,11 +20,14 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            background: url('/bg.png') no-repeat center center/cover;
             color: #ffffff;
+            background-color: #000;
         }
 
         header {
+            position: absolute;
+            z-index: 1;
+            top: 0;
             background: rgba(31, 31, 31, 0.9);
             color: #ffffff;
             padding: 20px 0;
@@ -31,6 +35,7 @@
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
             border-radius: 0 0 16px 16px;
+            opacity: 0;
         }
 
         header h1 {
@@ -54,6 +59,8 @@
         }
 
         .container {
+            position: absolute;
+            z-index: 1;
             margin: 20px;
             padding: 20px;
             max-width: 800px;
@@ -61,6 +68,7 @@
             border-radius: 16px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
             text-align: center;
+            opacity: 0;
         }
 
         .container h2 {
@@ -70,6 +78,10 @@
             border-bottom: 2px solid #ff6f00;
             display: inline-block;
             padding-bottom: 5px;
+        }
+
+        .container section {
+            margin: 50px 25px;
         }
 
         .container p {
@@ -89,7 +101,18 @@
             margin-bottom: 10px;
         }
 
+        .container ul li a {
+            color: #ff6f00;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
         footer {
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
             margin-top: 30px;
             padding: 20px 0;
             background: rgba(31, 31, 31, 0.9);
@@ -99,6 +122,7 @@
             font-size: 0.9rem;
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
             border-radius: 16px 16px 0 0;
+            opacity: 0;
         }
 
         .social-links {
@@ -111,6 +135,10 @@
             text-decoration: none;
             font-size: 1.2rem;
             transition: color 0.3s;
+        }
+
+        .social-links i {
+            color: #ffffff;
         }
 
         .social-links a:hover {
@@ -137,50 +165,80 @@
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="3d-force-graph.js"></script>
+
 </head>
+
 <body>
+    <div id="3d-graph" style="position: absolute;"></div>
     <header>
-        <h1>Welcome to My Journey</h1>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-            <a href="/mbti">MBTI-Typegrid</a>
-        </nav>
+        <h1>Welcome to my digital journey</h1>
+        <!-- <nav>
+            <a href="mbti">The complete MBTI-Typegrid</a>
+        </nav> -->
     </header>
 
     <div class="container">
         <section id="about">
             <h2>About Me</h2>
-            <p>Hi there! I’m an aspiring programmer and creator who loves building innovative solutions and exploring new technologies. From designing websites to crafting software, I’m on a mission to make the digital world better and more exciting.</p>
+            <p>Hi there! <br>I'm an programmer and creator with a passion for building innovative solutions and
+                exploring cutting-edge technologies, including LLMs, Knowlege Graphs to RAG.
+                From designing websites, developing software to tinkering with Iot devices. I'm on a mission to enhance
+                the digital world and make
+                it more dynamic and impactful.</p>
         </section>
 
         <section id="projects">
-            <h2>Projects</h2>
-            <p>Here are some of the things I’ve been working on:</p>
+            <h2>Personal Projects</h2>
+            <p>Some of the things I’ve been working on in my free time:</p>
             <ul>
-                <li>A personal portfolio website</li>
-                <li>A weather forecasting app</li>
-                <li>An interactive coding tutorial platform</li>
+                <li><a href="https://github.com/caBattista/Memology">Memology</a>- A visual RAG system for finding
+                    fitting memes for the situation</li>
+                <li><a href="https://github.com/caBattista/Cubegame">Cubegame</a>- Survive and thrive as a particle
+                    within a system</li>
+                <li><a href="mbti">The complete MBTI-Typegrid</a>- A collection of different Theories</li>
             </ul>
         </section>
 
         <section id="contact">
             <h2>Contact Me</h2>
-            <p>Have an idea or want to collaborate? Feel free to reach out!</p>
-            <p>Email: aspiringcreator@example.com</p>
+            <p>Have an idea or want to collaborate? Feel free to reach out on Social Media!</p>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2025 Aspiring Programmer & Creator</p>
         <div class="social-links">
-            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i>Twitter</a>
-            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i>YouTube</a>
-            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
-            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i>GitHub</a>
-            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
-        </div>
+            <!-- <a href="mailto:" target="_blank"><i class="fa fa-envelope"></i>E-Mail</a> -->
+            <a href="https://www.linkedin.com/in/christopher-battista-4030b3248/" target="_blank"><i
+                    class="fab fa-linkedin"></i>LinkedIn</a>
+            <a href="https://github.com/caBattista" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+            <a href="https://x.com/Christo02678396" target="_blank"><i class="fab fa-twitter"></i>Twitter</a>
+            <a href="https://www.youtube.com/channel/UCpHmhlDDArjwd_qASGwe3Aw/" target="_blank"><i
+                    class="fab fa-youtube"></i>YouTube</a>
+            <a href="https://www.instagram.com/battistaChristopher/" target="_blank"><i
+                    class="fab fa-instagram"></i>Instagram</a>
+            <p>&copy; 2025 Christopher Battista</p>
+
     </footer>
+
+    <script>
+        const Graph = new ForceGraph3D(document.getElementById('3d-graph'))
+            .jsonUrl('graphData.json')
+            .nodeAutoColorBy('user');
+
+        const header = document.getElementsByTagName('header')[0];
+        const container = document.getElementsByClassName('container')[0];
+        const footer = document.getElementsByTagName('footer')[0];
+
+        setTimeout(() => {
+            header.style.transition = "1s";
+            header.style.opacity = "1";
+            container.style.transition = "2s";
+            container.style.opacity = "1";
+            footer.style.transition = "4s";
+            footer.style.opacity = "1";
+        }, 1000);
+    </script>
 </body>
+
 </html>
