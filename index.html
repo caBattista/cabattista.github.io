@@ -263,21 +263,21 @@
             header.style.transition = "0.5s";
             container.style.transition = "0.5s";
             footer.style.transition = "0.5s";
+        }, 5000);
 
-            graphCont.addEventListener("click", ev => {
+        graphCont.addEventListener("click", ev => {
                 container.style.opacity = 0;
                 container.style.pointerEvents = "none";
                 socialLinks.style.display = "none";
                 linkBack.style.display = "";
             })
 
-            linkBack.addEventListener("click", ev => {
-                container.style.opacity = 1;
-                container.style.pointerEvents = "";
-                socialLinks.style.display = "";
-                linkBack.style.display = "none";
-            })
-        }, 5000);
+        linkBack.addEventListener("click", ev => {
+            container.style.opacity = 1;
+            container.style.pointerEvents = "";
+            socialLinks.style.display = "";
+            linkBack.style.display = "none";
+        })
     </script>
 </body>
 
